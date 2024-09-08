@@ -1,6 +1,6 @@
-# classifier-linear
+# classifier-anshp
 
-`classifier-linear` is a simple linear classifier built using TensorFlow. This package includes a customizable linear model for binary classification and provides sample datasets for quick testing. The classifier is designed for flexibility and can be applied to custom datasets or pre-defined datasets, such as logical operations (AND, OR, XOR, XNOR).
+`classifier-anshp` is a simple linear classifier built using TensorFlow. This package includes a customizable linear model for binary classification and provides sample datasets for quick testing. The classifier is designed for flexibility and can be applied to custom datasets or pre-defined datasets, such as logical operations (AND, OR, XOR, XNOR).
 
 ## Features
 
@@ -15,7 +15,7 @@
 You can install the package directly from PyPI:
 
 ```bash
-pip install classifier-linear
+pip install classifier-anshp
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ pip install classifier-linear
 The `clsfr` function allows you to train a linear classifier on your own dataset.
 
 ```python
-from classifier_linear import clsfr
+from classifier_anshp import clsfr
 import numpy as np
 
 # Example dataset
@@ -49,7 +49,7 @@ You can quickly test the classifier using the predefined datasets. The package p
 - **Dataset 2**: Logical operations like AND, OR, XOR, and XNOR.
 
 ```python
-from classifier_linear import dataset_1, dataset_2
+from classifier_anshp import dataset_1, dataset_2
 
 # Example 1: Generate random dataset
 inputs, val_true = dataset_1(sample_size=100)
@@ -79,11 +79,11 @@ dataset-2 --num 2
 
 ## Advantages Over scikit-learn
 
-1. **TensorFlow-Based**: While `scikit-learn` provides efficient linear models, `classifier-linear` is built using TensorFlow, which allows for more customization and seamless integration with larger deep learning frameworks.
+1. **TensorFlow-Based**: While `scikit-learn` provides efficient linear models, `classifier-anshp` is built using TensorFlow, which allows for more customization and seamless integration with larger deep learning frameworks.
   
 2. **Gradient-Based Optimization**: The package uses TensorFlow’s gradient-based optimization, making it easy to modify and extend for more complex models beyond linear classifiers.
 
-3. **Dataset Flexibility**: In addition to custom datasets, `classifier-linear` comes with logical operation datasets, making it easier to test and experiment with common machine learning tasks.
+3. **Dataset Flexibility**: In addition to custom datasets, `classifier-anshp` comes with logical operation datasets, making it easier to test and experiment with common machine learning tasks.
 
 4. **Custom Training Intervals**: The classifier provides detailed control over training steps, ensuring outputs are printed every 10 intervals, unlike scikit-learn, where training steps aren’t typically exposed.
 
@@ -94,7 +94,7 @@ dataset-2 --num 2
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](license.txt) file for more details.
 
 ## Author
 
