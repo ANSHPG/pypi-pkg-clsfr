@@ -101,4 +101,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Anshuman Pattnaik  
 Email: helloanshu04@gmail.com
 
-For more details, visit the [GitHub Repository](https://github.com/ANSHPG).
+For more details, visit the [GitHub Repository](https://github.com/ANSHPG/pypi-pkg-clsfr).
