@@ -1,13 +1,18 @@
 # classifier-anshp
 
-`classifier-anshp` is a simple linear classifier built using TensorFlow. This package includes a customizable linear model for binary classification and provides sample datasets for quick testing. The classifier is designed for flexibility and can be applied to custom datasets or pre-defined datasets, such as logical operations (AND, OR, XOR, XNOR).
+`classifier-anshp` is a powerful linear classifier built using TensorFlow. This package features a customizable linear model for binary classification and includes tools for hyperparameter tuning, making it suitable for various machine learning tasks.
 
 ## Features
 
 - **Customizable Linear Classifier**: Modify input features, learning rate, and number of steps to train a linear model for binary classification.
-- **Predefined Datasets**: Two sample datasets are included:
+
+- **Hyperparameter Tuner**: The `hyper_tunner` function enables efficient tuning of model parameters to optimize performance across different settings. It supports various optimizers and loss functions, allowing users to find the best configuration for their datasets.
+
+- **Predefined Datasets**: The package includes three sample datasets for quick testing:
   - **Dataset 1**: Generates a synthetic dataset using multivariate Gaussian distributions.
   - **Dataset 2**: Logical operations (AND, OR, XOR, XNOR) for testing the classifier.
+  - **Dataset 3**: IMDB movie reviews dataset for sentiment analysis, providing a real-world binary classification task.
+
 - **TensorFlow Backend**: Leverages TensorFlow for handling large-scale computations and efficient gradient-based optimization.
 
 ## Installation
@@ -22,7 +27,7 @@ pip install classifier-anshp
 
 ### 1. Training a Custom Linear Classifier
 
-The `clsfr` function allows you to train a linear classifier on your own dataset.
+The `clsfr` function allows you to train a linear classifier on your dataset.
 
 ```python
 from classifier_anshp import clsfr
@@ -41,51 +46,76 @@ print(f'Weights: {weights}')
 print(f'Bias: {bias}')
 ```
 
-### 2. Using Sample Datasets
+### 2. Hyperparameter Tuning
 
-You can quickly test the classifier using the predefined datasets. The package provides two functions for generating data:
+The `hyper_tunner` function is designed to optimize the model's performance by adjusting various parameters.
+
+```python
+from classifier_anshp import hyper_tunner
+
+# Example usage
+optimal_epoch = hyper_tunner(x_train, y_train, x_test, y_test, epoch=50, mode=0)
+print(f'Optimal Epoch: {optimal_epoch}')
+```
+
+### 3. Using Sample Datasets
+
+You can quickly test the classifier using the predefined datasets. The package provides three functions for generating data:
 
 - **Dataset 1**: Generates a random binary classification dataset using multivariate normal distribution.
 - **Dataset 2**: Logical operations like AND, OR, XOR, and XNOR.
+- **Dataset 3**: IMDB dataset for sentiment analysis.
 
 ```python
-from classifier_anshp import dataset_1, dataset_2
+from classifier_anshp import dataset_1, dataset_2, dataset_3
 
 # Example 1: Generate random dataset
 inputs, val_true = dataset_1(sample_size=100)
 
 # Example 2: Logical OR operation
 inputs, val_true = dataset_2(num=2)  # 1 for AND, 2 for OR, 3 for XOR, 4 for XNOR
+
+# Example 3: Load IMDB dataset
+partial_x_train, partial_y_train, x_val, y_val, x_test, y_test = dataset_3()
 ```
 
-### 3. Running from Command Line
+### 4. Running from Command Line
 
 After installing the package, you can run the classifier or dataset generation directly from the command line.
 
 #### Run Classifier:
+
 ```bash
 classifier-anshp --inputs [[1,2],[3,4]] --val_true [0,1] --lrn_rt 0.01 --steps 50
 ```
 
 #### Generate Dataset 1:
+
 ```bash
 dataset-1 --sample_size 100
 ```
 
 #### Generate Dataset 2 (Logical Operations):
+
 ```bash
 dataset-2 --num 2
 ```
 
+#### Generate Dataset 3 (IMDB Reviews):
+
+```bash
+dataset-3
+```
+
 ## Advantages Over scikit-learn
 
-1. **TensorFlow-Based**: While `scikit-learn` provides efficient linear models, `classifier-anshp` is built using TensorFlow, which allows for more customization and seamless integration with larger deep learning frameworks.
-  
+1. **TensorFlow-Based**: While `scikit-learn` provides efficient linear models, `classifier-anshp` is built using TensorFlow, allowing for more customization and seamless integration with larger deep learning frameworks.
+
 2. **Gradient-Based Optimization**: The package uses TensorFlow’s gradient-based optimization, making it easy to modify and extend for more complex models beyond linear classifiers.
 
-3. **Dataset Flexibility**: In addition to custom datasets, `classifier-anshp` comes with logical operation datasets, making it easier to test and experiment with common machine learning tasks.
+3. **Dataset Flexibility**: In addition to custom datasets, `classifier-anshp` comes with logical operation datasets and the IMDB dataset, making it easier to test and experiment with common machine learning tasks.
 
-4. **Custom Training Intervals**: The classifier provides detailed control over training steps, ensuring outputs are printed every 10 intervals, unlike scikit-learn, where training steps aren’t typically exposed.
+4. **Custom Training Intervals**: The classifier provides detailed control over training steps, ensuring outputs are printed at regular intervals.
 
 ## Limitations
 
@@ -99,6 +129,6 @@ This project is licensed under the MIT License. See the [LICENSE](license.txt) f
 ## Author
 
 Anshuman Pattnaik  
-Email: helloanshu04@gmail.com
+Email: helloanshu04@gmail.com  
 
 For more details, visit the [GitHub Repository](https://github.com/ANSHPG/pypi-pkg-clsfr).
